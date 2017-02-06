@@ -16,6 +16,10 @@ namespace Lab2_4
             y = _y;
         }
 
+        public Complex()
+        {
+        }
+
         public static Complex operator +(Complex a, Complex b)//creating the adding operator
         {
             Complex c = new Complex();

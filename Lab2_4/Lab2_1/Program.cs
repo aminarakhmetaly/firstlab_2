@@ -10,13 +10,13 @@ namespace Lab2_4
     {
         static void Main(string[] args)
         {
+            
+
             Complex a = new Complex(1, 6);//creating values for new variables of complex numbers
             Complex b = new Complex(8, 3);
             Complex c = a + b;//using operator +
-
-
             Console.Write(c);//outputing the result for console
-
+        
             Console.ReadKey();
         }
     }
