@@ -48,13 +48,10 @@ namespace Recursion
 
         static void Main(string[] args)
         {
-            CustomFolderInfo test = new CustomFolderInfo(null, 0, new DirectoryInfo(@"C:\inetpub\temp\appPools").GetDirectories());
+            CustomFolderInfo test = new CustomFolderInfo(null, 0, new DirectoryInfo(@"C:\").GetDirectories());
             //here we create new variable of a class and give the data for its items
             ShowFolderInfo(test);
         }
     }
 
-    internal class CustomFolderInfo
-    {
-    }
 }

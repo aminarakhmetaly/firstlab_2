@@ -29,7 +29,7 @@ namespace Recursion
             {
                 if (i == index)
                 {
-                    Console.ForegroundColor = ConsoleColor.Black;
+                    Console.ForegroundColor = ConsoleColor.Yellow;
                 }
                 else
                 {
@@ -56,7 +56,7 @@ namespace Recursion
             return new CustomFolderInfo(this, 0, this.dirs[index].GetDirectories());
             //giving new info for the next opened item
         }
-C:\Users\Амина\Source\Repos\firstlab_2\Lab2_4\recursion\CustomFolderInfo.cs
+
         public CustomFolderInfo GetPrevItem()
         {
             return prev;
