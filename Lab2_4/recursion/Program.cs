@@ -17,7 +17,7 @@ namespace Recursion
 
             ConsoleKeyInfo pressedKey = Console.ReadKey();
 
-            //various cases of putting data into the console using buttons
+            //various cases of putting data into the console using the kursor and buttons
             if (pressedKey.Key == ConsoleKey.UpArrow)
             {
                 item.DecreaseIndex();
