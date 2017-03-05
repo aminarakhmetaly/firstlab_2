@@ -4,70 +4,24 @@ using System.IO;
 using System.Linq;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
-using System.Threading;
 using System.Threading.Tasks;
 
-namespace Snake1
+namespace SnakeofAmina
 {
     [Serializable]
-    public class Program
+    class Program
     {
-        static Worm snake = new Worm();
+        static Snakes snake = new Snakes();
         static Food food = new Food();
         static bool Gameover = false;
         static Wall wall = new Wall(1);
         static Objects g = new Objects(snake, food, Gameover, wall);
-        public static Thread toMove = new Thread(new ThreadStart(callingMove));
-        public static Thread pressedKeys = new Thread(new ThreadStart(play));
-
-
         static void Main(string[] args)
         {
             Console.CursorVisible = false;
-            Console.SetWindowSize(50, 50);
-            Game.Init();
-            pressedKeys.Start();
-            public static void play()
-        {
-            Game.Generate();
-            toMove.Start();
-            Game.Draw();
-            while (Game.inGame)
-            {
-                Game.Draw();
-                ConsoleKeyInfo button = Console.ReadKey(true);
-
-                switch (button.Key)
-                {
-                    case ConsoleKey.UpArrow:
-                        Game.worm.changeDirection(0, -1);
-                        break;
-                    case ConsoleKey.DownArrow:
-                        Game.worm.changeDirection(0, 1);
-                        break;
-                    case ConsoleKey.RightArrow:
-                        Game.worm.changeDirection(1, 0);
-                        break;
-                    case ConsoleKey.LeftArrow:
-                        Game.worm.changeDirection(-1, 0);
-                        break;
-                    case ConsoleKey.Q:
-                        Game.saveGame();
-                        break;
-                    case ConsoleKey.W:
-                        Game.loadGame();
-                        break;
-                }
-                Game.worm.Clear();
-            }
-        }
-
-        public static void callingMove()
-        {
+            Console.SetWindowSize(40, 40);
             while (!Gameover)
             {
-                Thread.Sleep(Game.SPEED);
-                Game.Clear();
                 Console.Clear();
                 snake.draw();
                 food.draw();
@@ -108,13 +62,13 @@ namespace Snake1
                         Gameover = true;
                         break;
 
-                
+
                 }
-                
+
                 if (snake.CanEat(food))
                 {
                     food.SetRandomPosition();
-                    
+
                 }
 
                 if (snake.body.Count == 5)
@@ -134,11 +88,11 @@ namespace Snake1
                     wall = new Wall(5);
                 }
 
-                for(int i=0; i < wall.body.Count; i++)
+                for (int i = 0; i < wall.body.Count; i++)
                 {
-                    if(snake.body[0].x == wall.body[i].x && snake.body[0].y == wall.body[i].y)
+                    if (snake.body[0].x == wall.body[i].x && snake.body[0].y == wall.body[i].y)
                     {
-                        
+
                         Console.Clear();
                         Console.WriteLine("Game Over");
                         Console.ReadKey();

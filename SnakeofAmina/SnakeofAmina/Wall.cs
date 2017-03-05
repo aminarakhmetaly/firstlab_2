@@ -5,29 +5,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Snake1 
+namespace SnakeofAmina
 {
-    [Serializable]
-    public class Wall : GameObject
+    class Wall
     {
-        public ConsoleColor color = ConsoleColor.White;
+        public ConsoleColor color = ConsoleColor.DarkRed;
         public List<Point> body = new List<Point>();
-        public new char sign = 'o';
-        private int v;
-
-        public Wall(int v)
-        {
-            this.v = v;
-        }
-
-        //
+        public char sign = '$';
 
 
-            //
-
-
-
-           public Wall(int level)
+        public Wall(int level)
         {
             string filename = string.Format(@"level{0}.txt", level);
             FileStream fs = new FileStream(filename, FileMode.OpenOrCreate, FileAccess.Read);
@@ -63,7 +50,7 @@ namespace Snake1
                 Console.SetCursorPosition(p.x, p.y);
                 Console.Write(sign);
             }
-           
+
         }
 
 

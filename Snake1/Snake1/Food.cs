@@ -6,11 +6,12 @@ using System.Threading.Tasks;
 
 namespace Snake1
 {
-    class Food
+    [Serializable]
+   public class Food : GameObject
     {
         public Point location;
-        public ConsoleColor color = ConsoleColor.DarkBlue;
-        public char sign = '#';
+        public ConsoleColor color = ConsoleColor.White;
+        public new char sign = 'o';
 
 
         public Food()
@@ -33,7 +34,37 @@ namespace Snake1
             Console.SetCursorPosition(location.x, location.y);
             Console.Write(sign);
         }
+        public bool foodInWall()
+        {
+            for (int i = 0; i < wall.points.Count; i++)
+            {
+                if (points[0].Equals(Wall.points[i]))
+                    return true;
+            }
+            return false;
+        }
 
+        public bool foodInWorm()
+        {
+            for (int i = 0; i < Worm.points.Count; i++)
+            {
+                if (points[0].Equals(Worm.points[i]))
+                    return true;
+            }
+            return false;
+        }
 
+        public void newFood()
+        {
+            do
+            {
+                points.Clear();
+                SetRandomPosition();
+            } while (foodInWall() || foodInWorm());
+        }
+
+       
     }
+
+
 }

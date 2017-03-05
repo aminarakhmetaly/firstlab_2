@@ -4,12 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Snake1
+namespace SnakeofAmina
 {
     [Serializable]
     class Objects
     {
-        Worm snake = new Worm();
+        Snakes snake = new Snakes();
         Food food = new Food();
         static bool Gameover = false;
         Wall wall = new Wall(1);
@@ -17,7 +17,7 @@ namespace Snake1
         {
 
         }
-        public Objects(Worm _snake,Food _food, bool _Gameover, Wall _wall)
+        public Objects(Snakes _snake, Food _food, bool _Gameover, Wall _wall)
         {
             snake = _snake;
             food = _food;

@@ -4,19 +4,28 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Snake1
+namespace SnakeofAmina
 {
     class Snakes
     {
         public ConsoleColor color = ConsoleColor.Magenta;
         public char sign = '*';
         public List<Point> body = new List<Point>();
+        Game game = null;
+
+        public void LinkToGame(Game game)
+        {
+            this.game = game;
+        }
+
 
 
         public Snakes()
         {
             body.Add(new Point(10, 10));
             //body.Add(new Point(9, 10));
+            //body.Add(new Point(8, 10));
+
         }
 
 
@@ -24,7 +33,10 @@ namespace Snake1
 
         public void move(int dx, int dy)
         {
-            for (int i = body.Count - 1; i > 0; --i)
+            while (true)
+            {
+                Thread.Sleep(Game.SPEED);
+                for (int i = body.Count - 1; i > 0; --i)
             {
                 body[i].x = body[i - 1].x;
                 body[i].y = body[i - 1].y;
@@ -32,13 +44,15 @@ namespace Snake1
 
             body[0].x += dx;
             body[0].y += dy;
-            if (body[0].x > 30)
+                this.Clear();
+
+            if (body[0].x > 60)
             {
-                body[0].x = 0;            
+                body[0].x = 0;
             }
             if (body[0].x < 0)
             {
-                body[0].x = 30;            
+                body[0].x = 60;
             }
             if (body[0].y > 30)
             {
@@ -48,8 +62,11 @@ namespace Snake1
             {
                 body[0].y = 30;
             }
+                this.Draw();
 
-        }
+                game.CanEat();
+
+            }
 
 
 
